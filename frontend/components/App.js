@@ -1,6 +1,6 @@
 import React from 'react'
-import Todo from './Todo'
 
+import TodoList from './TodoList'
 
 
 const todos = [
@@ -12,7 +12,7 @@ const todos = [
   {
     name: 'Bake Cookies',
     id: 1528817084358,
-    completed: true
+    completed: false
   },
   {
     name: 'Eat Lunch',
@@ -51,14 +51,7 @@ export default class App extends React.Component {
     return (
       <div>
         Todo App
-        <ul>
-          {
-          todos.map(todo => {
-            return ( <Todo todo={todo}/>)
-          })
-          }
-          
-        </ul>
+       <TodoList todos = {todos}/> 
 
         <form>
           <input/>
