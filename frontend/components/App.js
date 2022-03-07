@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Todo from './Todo'
 
 
 
@@ -12,7 +12,7 @@ const todos = [
   {
     name: 'Bake Cookies',
     id: 1528817084358,
-    completed: false
+    completed: true
   },
   {
     name: 'Eat Lunch',
@@ -54,9 +54,7 @@ export default class App extends React.Component {
         <ul>
           {
           todos.map(todo => {
-            return (
-            <li key = {todo.id} > { todo.name } { todo.completed ? <span> - completed </span> : <span>  </span>} </li>
-            )
+            return ( <Todo todo={todo}/>)
           })
           }
           
