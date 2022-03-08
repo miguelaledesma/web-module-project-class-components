@@ -63,7 +63,7 @@ export default class App extends React.Component {
   handleAdd = (item) => {
     const newItem = {
     name: item,
-    id: Date.now,
+    id: Date.now(),
     completed: false
   };
 
@@ -95,9 +95,9 @@ handleToggle = (item) => {
     return (
       <div>
         Todo App
-       <TodoList handleToggle = {this.handleToggle} todos = {todos}/> 
+       <TodoList handleToggle = {this.handleToggle}  todos = {todos} handleClear ={this.handleClear} /> 
       <Form handleAdd = {this.handleAdd} /> 
-       <button onClick ={this.handleClear}  >clear</button>
+       <button  >clear</button>
       </div>
     )
     }

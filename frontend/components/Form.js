@@ -19,7 +19,7 @@ handleChanges = e => {
 // class property to submit form
 handleSubmit = (event) => {
   event.preventDefault();
-  this.props.handleAddItems(this.state.input);
+  this.props.handleAdd(this.state.input);
 }
   render() {
     return (
