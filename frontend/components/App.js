@@ -11,17 +11,17 @@ const todos = [
   },
   {
     name: 'Bake Cookies',
-    id: 1528817084358,
+    id: 1528817084378,
     completed: false
   },
   {
     name: 'Eat Lunch',
-    id: 1528817084358,
+    id: 1528817084058,
     completed: false
   },
   {
     name: 'Eat Dinner',
-    id: 1528817084358,
+    id: 1528817094358,
     completed: true
   },
 ]
@@ -29,7 +29,7 @@ const todos = [
   
 
 
-const initialState = { todos }
+
 
 
 
@@ -41,8 +41,52 @@ const initialState = { todos }
 
 export default class App extends React.Component {
 
-  state = initialState
+  constructor() {
+    super();
+    this.state = {
+      todos: todos
+    }
+  }
   
+  handleClear = () => {
+    console.log('cleared')
+
+    this.setState({
+      ...this.state,
+      todos: this.state.todos.filter(todo => {
+        return (todo.completed === false)
+      })
+    })
+  }
+
+
+  handleAdd = (item) => {
+    const newItem = {
+    name: item,
+    id: Date.now,
+    completed: false
+  };
+
+  this.setState({
+    ...this.state,
+    todos: [...this.state.todos, newItem]
+  });
+}
+
+handleToggle = (item) => {
+  this.setState({
+    ...this.state,
+    todos: this.state.todos.map(list => {
+      if(list.id === item.id){
+        return ({
+          ...list,
+          completed: !list.completed
+        })
+      }
+      return list;
+    })
+  })
+  }
 
 
   render() {
@@ -51,10 +95,10 @@ export default class App extends React.Component {
     return (
       <div>
         Todo App
-       <TodoList todos = {todos}/> 
-      <Form  /> 
-       <button>clear</button>
+       <TodoList handleToggle = {this.handleToggle} todos = {todos}/> 
+      <Form handleAdd = {this.handleAdd} /> 
+       <button onClick ={this.handleClear}  >clear</button>
       </div>
     )
+    }
   }
-}
